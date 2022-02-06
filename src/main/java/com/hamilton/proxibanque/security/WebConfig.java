@@ -25,11 +25,11 @@ public class WebConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-       http.authorizeRequests().antMatchers(HttpMethod.GET,"/aa/**").hasAuthority("ADMIN") ;
+       http.authorizeRequests().antMatchers(HttpMethod.GET,"/clients").hasAuthority("ADMIN") ;
       //  http.authorizeRequests().antMatchers(HttpMethod.GET,"/aa/**").permitAll() ;
       //  http.authorizeRequests().antMatchers(HttpMethod.PATCH,"/aa/**").permitAll() ;
       //  http.authorizeRequests().antMatchers(HttpMethod.GET,"/aa/**").permitAll() ;
-        http.authorizeRequests().antMatchers(HttpMethod.POST,"/aa/**").hasAuthority("USER");
+        http.authorizeRequests().antMatchers(HttpMethod.POST,"/clients/**").hasAuthority("USER");
       //  http.authorizeRequests().antMatchers(HttpMethod.POST,"/aa/**").permitAll();
       //  http.authorizeRequests().antMatchers(HttpMethod.POST,"/aa/**").permitAll();
 

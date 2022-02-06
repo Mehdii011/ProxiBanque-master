@@ -15,8 +15,11 @@ import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+
 
 @RestController
+@CrossOrigin("*")
 public class ClientController {
     @Autowired
     private ClientRepository clientRepository;
