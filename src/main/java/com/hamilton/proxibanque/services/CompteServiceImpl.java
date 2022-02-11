@@ -31,17 +31,19 @@ public class CompteServiceImpl implements ICompteService{
     }
 
     @Override
-    public void editcompte(Compte compte) {
+    public void editcomptecourant(CompteCourant compte) {
         compteRepository.save(compte);
         log.info("compte saved  with success {}", compte.getNumeroCompte());
     }
-
-
-
+    @Override
+    public void editcompteEpargne(CompteEpargne compte) {
+        compteRepository.save(compte);
+        log.info("compte saved  with success {}", compte.getNumeroCompte());
+    }
     @Override
     public void destroycompte(Long numCompte) {
-        compteRepository.deleteById(numCompte);
-        log.info("compte deleted with success {}", numCompte);
+         compteRepository.deleteById(numCompte);
+       // log.info("compte deleted with success {}", numCompte);
     }
 
 

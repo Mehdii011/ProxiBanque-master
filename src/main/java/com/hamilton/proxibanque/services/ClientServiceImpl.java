@@ -1,8 +1,10 @@
 package com.hamilton.proxibanque.services;
 
 import com.hamilton.proxibanque.dao.ClientRepository;
+import com.hamilton.proxibanque.dao.EmployeRepository;
 import com.hamilton.proxibanque.exception.ClientIntrouvable;
 import com.hamilton.proxibanque.model.Client;
+import com.hamilton.proxibanque.model.Employe;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,7 +17,8 @@ import java.util.Optional;
 public class ClientServiceImpl implements ClientService {
     @Autowired
     ClientRepository clientRepository;
-
+    @Autowired
+    EmployeRepository conseillerRepository;
 
     @Override
     public List<Client> getAllclients() {
@@ -29,15 +32,19 @@ public class ClientServiceImpl implements ClientService {
 
         return Optional.of(client.get());
     }
-     @Override
+    @Override
     public Client createclient(Client client) {
-       // log.info("client saved  with success {}", client);
 
+       // Employe currentConseiller=conseillerRepository.findByEmail(email);
+       // client.setEmploye(currentConseiller);
+
+        // log.info("client saved  with success {}", client);
         return  clientRepository.save(client);
     }
 
     @Override
     public void editclient(Client client) {
+
         clientRepository.save(client);
         //log.info("client updated  with success {}", client.getId());
     }
@@ -47,7 +54,7 @@ public class ClientServiceImpl implements ClientService {
     @Override
     public void destroyclient(Long id) {
         clientRepository.deleteById(id);
-      //  log.info("client deleted with success {}", id);
+
     }
 
 }

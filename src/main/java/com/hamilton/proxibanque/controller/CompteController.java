@@ -116,7 +116,6 @@ public class CompteController {
     }
 
       @PostMapping("/compteCourant")
-
     public void createcompteCourant(@RequestBody CompteCourant compte) throws AddCompteImpossible{
 
         Client client = compte.getClient();
@@ -133,6 +132,22 @@ public class CompteController {
             ResponseEntity<CompteCourant> cc =new ResponseEntity(compteService.createcompteCourant(compte), HttpStatus.CREATED);
 
         }
+    }
+
+    @PutMapping("/editcomptecourant")
+    public ResponseEntity<Compte> editcomptecourant( @RequestBody CompteCourant compte) {
+        compteService.editcomptecourant(compte);
+        return new ResponseEntity<>(compte, HttpStatus.OK);
+    }
+    @PutMapping("/editcompteEpargne")
+    public ResponseEntity<Compte> editcompteEpargne( @RequestBody CompteEpargne compte) {
+        compteService.editcompteEpargne(compte);
+        return new ResponseEntity<>(compte, HttpStatus.OK);
+    }
+
+    @GetMapping("/deletecompte/{id}")
+    public void delete(@PathVariable("id") Long id) {
+         compteService.destroycompte(id);
     }
 
 }

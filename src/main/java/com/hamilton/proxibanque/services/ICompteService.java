@@ -11,18 +11,8 @@ public interface ICompteService {
 
     Compte createcompteCourant(CompteCourant compte) ;
     Compte createcompteEpargne(CompteEpargne compte) ;
-
-
-
-
-
-
-
-
-
-
-    void editcompte(Compte compte) ;
-
+    void editcompteEpargne(CompteEpargne compte);
+    void editcomptecourant(CompteCourant compte) ;
     void destroycompte(Long numCompte) ;
 
 
